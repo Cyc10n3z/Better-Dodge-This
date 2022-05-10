@@ -1,11 +1,15 @@
 package;
 
 import flixel.FlxObject;
+import flixel.FlxSprite;
 import flixel.FlxState;
-import player.FlxG;
+// import flixel.addons.display.FlxBackdrop;
+import flixel.FlxG;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import player.Player;
+import enemies.Enemy;
+import enemies.Obstacle;
 import flixel.group.FlxGroup;
 
 class PlayState extends FlxState
@@ -28,15 +32,17 @@ class PlayState extends FlxState
 	public var enemyGroup:FlxTypedGroup<Enemy>;
 	public var obstacleGroup:FlxTypedGroup<Obstacle>;
 
-	var override public function create()
+	override public function create()
 	{
+		// Start the Intro Music
+
 		// Begin the game state by fading in
 		FlxG.camera.fade(FlxColor.BLACK, 0.33, true);
 
 		super.create();
 
-		// Create the game world elements: backdrop, left wall, etc.
-		backdrop = new FlxBackdrop();
+		// Create game world elements: backdrop, player wall boundaries, etc.
+		backdrop = new FlxBackdrop(AssetPaths.Background1__png, 0, 1, false, true, 0, 0);
 		backdrop.velocity.set(0, 100);
 		leftWall = new FlxObject(0, 0, FlxG.height, (FlxG.width - 10));
 		leftWall.immovable = true;
@@ -48,6 +54,14 @@ class PlayState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
+		//
+		spawnTimer += elapsed * 3;
+		if (spawnTimer > 1)
+		{
+			spawnTimer--;
+			enemyGroup.add(enemyGroup.recycle());
+		}
+
 		super.update(elapsed);
 
 		// Left wall collision

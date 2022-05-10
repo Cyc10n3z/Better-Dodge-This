@@ -1,9 +1,9 @@
 package player;
 
-import flixel.FlxG;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.FlxG;
 import flixel.util.FlxColor;
 
 class Player extends FlxSprite
@@ -13,9 +13,9 @@ class Player extends FlxSprite
 	public var maxHealth:Int = 2;
 	public var damage:Int;
 
-	public function new(X:Float = 0, Y:Float = 0)
+	public function new(x:Float = 0, y:Float = 0)
 	{
-		super(X, Y);
+		super(x, y);
 		// loadGraphic(AssetPaths.player__png, false);
 		this.width = 60;
 		this.height = 25;
