@@ -14,6 +14,7 @@ class MenuState extends FlxState
 {
 	var titleText:FlxText;
 	var titleText2:FlxText;
+	var pauseText:FlxText;
 	var playButton:FlxButtonPlus;
 	#if desktop
 	var exitButton:FlxButtonPlus;
@@ -39,9 +40,10 @@ class MenuState extends FlxState
 		titleText2.alignment = CENTER;
 		titleText2.screenCenter(X);
 		add(titleText2);
-
-		// Add
-
+		// Add paused message
+		pauseText = new FlxText(20, 100, 0, "PAUSED", 35);
+		pause.alignment;
+		pause.screen
 		// Add play button
 		playButton = new FlxButtonPlus(0, 0, clickPlay, "Play", 200, 50);
 		// PlayButton.onUp.sound = FlxG.sound.load(AssetPaths.start__wav);
@@ -81,9 +83,10 @@ class MenuState extends FlxState
 	{
 		super.update(elapsed);
 
+		// Menu click sound
 		if (FlxG.mouse.justPressed)
 		{
-			FlxG.sound.play(AssetPaths.MenuClick__wav, 100); // MenuClick sound
+			// FlxG.sound.play(AssetPaths., 100);
 		}
 
 		if (FlxG.keys.justPressed.ENTER)

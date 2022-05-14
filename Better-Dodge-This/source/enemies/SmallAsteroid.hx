@@ -4,19 +4,13 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxG;
 
-class Obstacle extends FlxSprite
+class SmallAsteroid extends FlxSprite
 {
-	public function new(x:Float = 0, y:Float = 0, speed:Float = 0, width:Int = 0, height:Int = 0)
+	public function new()
 	{
 		super();
 
 		immovable = true;
-
-		this.x = x;
-		this.y = y;
-		this.speed = speed;
-		this.width = width;
-		this.height = height;
 	}
 
 	override public function update(elapsed:Float)
@@ -29,11 +23,11 @@ class Obstacle extends FlxSprite
 		super.update(elapsed);
 	}
 
-	public static function overlapsWithPlayer(player:FlxObject, obstacle:Obstacle)
+	public static function overlapsWithPlayer(player:FlxObject, smallAsteroid:SmallAsteroid)
 	{
 		player.hurt(1);
 		// FlxG.sound.play(AssetPaths.PlayerHurt__wav, .80);
-		obstacle.kill();
+		smallAsteroid.kill();
 	}
 
 	public function movedOffScreen()

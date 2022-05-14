@@ -32,7 +32,7 @@ class Enemy extends FlxSprite
 		{
 			velocity.x = 0;
 			velocity.y = SPEED / 10;
-			loadGraphic(graphic, true);
+			// loadGraphic(graphic, true);
 			this.width = 80;
 			this.height = 120;
 			this.offset.x = 20;
@@ -40,7 +40,7 @@ class Enemy extends FlxSprite
 		}
 		else
 		{
-			loadGraphic(graphic, true);
+			// loadGraphic(graphic, true);
 			this.width = 30;
 			this.height = 45;
 			this.offset.x = 10;

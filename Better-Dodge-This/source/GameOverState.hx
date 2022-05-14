@@ -39,14 +39,14 @@ class GameOverState extends FlxState
 		titleText2.alignment = CENTER;
 		titleText2.screenCenter(X);
 		add(titleText2);
-		// Final Score message
-		totalScore = Hud.score;
-		finalScore = new FlxText(0, 170, 0, "Final Score: " + totalScore, 22);
-		finalScore.screenCenter(X);
-		add(finalScore);
+		/*// Final Score message
+			totalScore = Hud.score;
+			finalScore = new FlxText(0, 170, 0, "Final Score: " + totalScore, 22);
+			finalScore.screenCenter(X);
+			add(finalScore); */
 
 		// Game Over messages
-		endMessage = new FlxText(0, 0, 0, "Seems your time ran out... ", 22);
+		endMessage = new FlxText(0, 0, 0, "Looks like you didn't dodge very well!", 22);
 		endMessage.screenCenter();
 		add(endMessage);
 		endMessage2 = new FlxText((FlxG.width / 2) - 90, (FlxG.height / 2) + 20, 0, "Game Over!", 22);
@@ -65,7 +65,7 @@ class GameOverState extends FlxState
 		#end
 
 		// Sound for player death
-		FlxG.sound.play(AssetPaths.PlayerDeath__wav, 100);
+		// FlxG.sound.play(AssetPaths.PlayerDeath__wav, 100);
 
 		super.create();
 	}
@@ -90,7 +90,7 @@ class GameOverState extends FlxState
 		// Menu click sound
 		if (FlxG.mouse.justPressed)
 		{
-			FlxG.sound.play(AssetPaths.MenuClick__wav, 100);
+			// FlxG.sound.play(AssetPaths.MenuClick__wav, 100);
 		}
 	}
 }

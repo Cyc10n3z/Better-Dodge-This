@@ -16,11 +16,9 @@ class Player extends FlxSprite
 	public function new(x:Float = 0, y:Float = 0)
 	{
 		super(x, y);
-		// loadGraphic(AssetPaths.player__png, false);
-		this.width = 60;
-		this.height = 25;
-		this.offset.x = 14;
-		this.offset.y = 2.5;
+		loadGraphic(AssetPaths.PlayerShip__png, false);
+		this.width = 30;
+		this.height = 30;
 		health = maxHealth;
 	}
 
@@ -37,11 +35,6 @@ class Player extends FlxSprite
 
 	private function playerSpeed()
 	{
-		if (x < 4 || x > FlxG.width - width)
-		{
-			velocity.x = 0;
-		}
-
 		if (FlxG.keys.justPressed.UP)
 		{
 			velocity.y = -SPEED;
@@ -52,12 +45,12 @@ class Player extends FlxSprite
 			velocity.y = SPEED;
 		}
 
-		if (FlxG.keys.pressed.LEFT && x > 4)
+		if (FlxG.keys.pressed.LEFT)
 		{
 			velocity.x = -SPEED;
 		}
 
-		if (FlxG.keys.pressed.RIGHT && x < FlxG.width - width)
+		if (FlxG.keys.pressed.RIGHT)
 		{
 			velocity.x = SPEED;
 		}
