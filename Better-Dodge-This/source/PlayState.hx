@@ -77,12 +77,37 @@ class PlayState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		//
+		// Timing of asteroid waves spawning
 		spawnTimer += elapsed * 3;
 		if (spawnTimer > 1)
 		{
 			spawnTimer--;
-			// enemyGroup.add(enemyGroup.recycle());
+			waveTimer++;
+			// Change waves based on time elapsed (20 seconds)
+			if (waveTimer == 20)
+			{
+				waveTimer = 0;
+				waveNumber++;
+			}
+			// Change waves
+			if (waveNumber == 0)
+			{
+				smallSlowAsteroidGroup.recycle(SmallAsteroid, false, true);
+			}
+			else if (waveNumber == 1)
+			{
+				smallFastAsteroidGroup.recycle(SmallAsteroid, false, true);
+			}
+			else if (waveNumber == 2)
+			{
+				smallSlowAsteroidGroup.recycle(SmallAsteroid, false, true);
+				largeAsteroidGroup.recycle(LargeAsteroid, false, true);
+			}
+			else if (waveNumber == 3)
+			{
+				smallFastAsteroidGroup.recycle(SmallAsteroid, false, true);
+				largeAsteroidGroup.recycle(LargeAsteroid, false, true);
+			}
 		}
 
 		super.update(elapsed);
@@ -98,6 +123,11 @@ class PlayState extends FlxState
 			player.velocity.x = 0;
 		if (FlxG.collide(player, topWall) || FlxG.collide(player, bottomWall))
 			player.velocity.y = 0;
+
+		// Asteroid collision
+		FlxG.overlap(player, smallSlowAsteroidGroup, SmallAsteroid.overlapsWithPlayer);
+		FlxG.overlap(player, smallFastAsteroidGroup, SmallAsteroid.overlapsWithPlayer);
+		FlxG.overlap(player, largeAsteroidGroup, LargeAsteroid.overlapsWithPlayer);
 
 		// Enable fullscreen mode
 		if (FlxG.keys.justPressed.ENTER)
