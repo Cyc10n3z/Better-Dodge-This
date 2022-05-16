@@ -2,9 +2,9 @@
 CSC-303 Final Project
 
 
-MenuScreen.png
+!MenuScreen.png
 
-GamePlay.png
+!GamePlay.png
 
 
 This repository contains the game "Better Dodge This!" created as the Final Project 
