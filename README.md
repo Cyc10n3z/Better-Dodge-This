@@ -2,8 +2,8 @@
 CSC-303 Final Project
 
 
-![Screenshot 1](https://raw.github.com/Cyc10n3z/Better-Dodge-This/assets/images/MenuScreen.png)
-![Screenshot 2](https://raw.github.com/Cyc10n3z/Better-Dodge-This/assets/images/GamePlay.png)
+![Screenshot 1](https://github.com/Cyc10n3z/Better-Dodge-This/assets/images/MenuScreen.png)
+![Screenshot 2](https://github.com/Cyc10n3z/Better-Dodge-This/assets/images/GamePlay.png)
 
 This repository contains the game "Better Dodge This!" created as the Final Project 
 for the CSC-303 class at Missouri State University.
