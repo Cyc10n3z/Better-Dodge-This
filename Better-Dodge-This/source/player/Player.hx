@@ -8,7 +8,7 @@ import flixel.util.FlxColor;
 
 class Player extends FlxSprite
 {
-	public static var SPEED(default, never):Int = 120;
+	public static var SPEED(default, never):Int = 150;
 
 	public var maxHealth:Int = 2;
 	public var damage:Int;
@@ -17,8 +17,8 @@ class Player extends FlxSprite
 	{
 		super(x, y);
 		loadGraphic(AssetPaths.PlayerShip__png, false);
-		this.width = 30;
-		this.height = 30;
+		this.width = 45;
+		this.height = 45;
 		health = maxHealth;
 	}
 
