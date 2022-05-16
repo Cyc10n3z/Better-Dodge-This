@@ -1,17 +1,17 @@
 # Better-Dodge-This
 CSC-303 Final Project
 
-
-!(/Cyc10n3z/Better-Dodge-This/blob/main/Better-Dodge-This/assets/images/MenuScreen.png)
-
-!(/Cyc10n3z/Better-Dodge-This/blob/main/Better-Dodge-This/assets/images/GamePlay.png)
-
+<div align="center">
+    ![Screenshot 1](MenuScreen.png)
+    ![Screenshot 2](GamePlay.png)
+</div>
 
 This repository contains the game "Better Dodge This!" created as the Final Project 
 for the CSC-303 class at Missouri State University.
 
 Images, Music, and Sound used for this game can be found at "www.OpenGameArt.org" and
 are used under the CC0 Public Domain License.
+
 
 Game Overview:
 
