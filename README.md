@@ -2,8 +2,10 @@
 CSC-303 Final Project
 
 <div align="center">
-    ![Screenshot 1](MenuScreen.png)
-    ![Screenshot 2](GamePlay.png)
+    ![Screenshot 1](https://raw.github.com/Cyc10n3z/Better-Dodge-This/assets/images/MenuScreen.png)
+</div>
+<div aling="center">
+    ![Screenshot 2](https://raw.github.com/Cyc10n3z/Better-Dodge-This/assets/images/GamePlay.png)
 </div>
 
 This repository contains the game "Better Dodge This!" created as the Final Project 
