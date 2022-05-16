@@ -10,7 +10,7 @@ class Player extends FlxSprite
 {
 	public static var SPEED(default, never):Int = 150;
 
-	public var maxHealth:Int = 4;
+	public var maxHealth:Int = 2;
 	public var damage:Int;
 
 	public function new(x:Float = 0, y:Float = 0)
@@ -35,42 +35,42 @@ class Player extends FlxSprite
 
 	private function playerSpeed()
 	{
-		if (FlxG.keys.justPressed.UP)
+		if (FlxG.keys.justPressed.W)
 		{
 			velocity.y = -SPEED;
 		}
 
-		if (FlxG.keys.pressed.DOWN)
+		if (FlxG.keys.pressed.S)
 		{
 			velocity.y = SPEED;
 		}
 
-		if (FlxG.keys.pressed.LEFT)
+		if (FlxG.keys.pressed.A)
 		{
 			velocity.x = -SPEED;
 		}
 
-		if (FlxG.keys.pressed.RIGHT)
+		if (FlxG.keys.pressed.D)
 		{
 			velocity.x = SPEED;
 		}
 
-		if (FlxG.keys.pressed.RIGHT && FlxG.keys.pressed.LEFT)
+		if (FlxG.keys.pressed.D && FlxG.keys.pressed.A)
 		{
 			velocity.x = 0;
 		}
 
-		if (FlxG.keys.pressed.UP && FlxG.keys.pressed.DOWN)
+		if (FlxG.keys.pressed.W && FlxG.keys.pressed.S)
 		{
 			velocity.y = 0;
 		}
 
-		if (FlxG.keys.justReleased.LEFT || FlxG.keys.justReleased.RIGHT)
+		if (FlxG.keys.justReleased.A || FlxG.keys.justReleased.D)
 		{
 			velocity.x = 0;
 		}
 
-		if (FlxG.keys.justReleased.UP || FlxG.keys.justReleased.DOWN)
+		if (FlxG.keys.justReleased.W || FlxG.keys.justReleased.S)
 		{
 			velocity.y = 0;
 		}
