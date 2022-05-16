@@ -1,6 +1,7 @@
 # Better-Dodge-This
 CSC-303 Final Project
 
+Game hosted at: https://cyc10n3z.github.io/Better-Dodge-This/
 
 ![Screenshot 1](https://github.com/Cyc10n3z/Better-Dodge-This/assets/images/MenuScreen.png)
 ![Screenshot 2](https://github.com/Cyc10n3z/Better-Dodge-This/assets/images/GamePlay.png)
