@@ -8,7 +8,6 @@ import flixel.FlxG;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import player.Player;
-import enemies.Enemy;
 import enemies.SmallAsteroid;
 import enemies.LargeAsteroid;
 import flixel.group.FlxGroup;
@@ -26,26 +25,21 @@ class PlayState extends FlxState
 	var player:Player;
 
 	// Enemy Variables
-	var spawnTimer:Float = 0;
-	var SECONDS_PER_ENEMY(default, never):Float = 1;
-	var enemy:Enemy;
-
-	// Asteroid Variables
-	var smallAsteroid:SmallAsteroid;
-	var largeAsteroid:LargeAsteroid;
+	var spawnTimer:Float = 1;
+	var waveTimer:Float = 0;
+	var waveNumber:Int = 0;
 
 	// Enemy and Asteroid Groups
-	public var enemyGroup:FlxTypedGroup<Enemy>;
-	public var smallAsteroidGroup:FlxTypedGroup<SmallAsteroid>;
+	public var smallSlowAsteroidGroup:FlxTypedGroup<SmallAsteroid>;
+	public var smallFastAsteroidGroup:FlxTypedGroup<SmallAsteroid>;
 	public var largeAsteroidGroup:FlxTypedGroup<LargeAsteroid>;
 
-	// Game Over condition
+	// Game Over conditions
 	var end:Bool = false;
+	var win:Bool = false;
 
 	override public function create()
 	{
-		// Start the Intro Music
-
 		// Begin the PlayState
 		FlxG.camera.fade(FlxColor.BLACK, 0.33, true);
 
@@ -72,19 +66,52 @@ class PlayState extends FlxState
 		add(rightWall);
 		add(topWall);
 		add(bottomWall);
+		// Add the player
 		add(player);
+		// Setup and add asteroids
+		setupAsteroids();
+	}
+
+	private function setupAsteroids()
+	{
+		// Create Asteroid Groups
+		smallSlowAsteroidGroup = new FlxTypedGroup<SmallAsteroid>();
+		smallFastAsteroidGroup = new FlxTypedGroup<SmallAsteroid>();
+		largeAsteroidGroup = new FlxTypedGroup<LargeAsteroid>();
+		for (i in 0...10)
+		{
+			var smallSlowAsteroid = new SmallAsteroid(120);
+			smallSlowAsteroid.kill();
+			smallSlowAsteroidGroup.add(smallSlowAsteroid);
+		}
+		for (i in 0...10)
+		{
+			var smallFastAsteroid = new SmallAsteroid(200);
+			smallFastAsteroid.kill();
+			smallFastAsteroidGroup.add(smallFastAsteroid);
+		}
+		for (i in 0...4)
+		{
+			var largeAsteroid = new LargeAsteroid(100);
+			largeAsteroid.kill();
+			largeAsteroidGroup.add(largeAsteroid);
+		}
+
+		add(smallSlowAsteroidGroup);
+		add(smallFastAsteroidGroup);
+		add(largeAsteroidGroup);
 	}
 
 	override public function update(elapsed:Float)
 	{
 		// Timing of asteroid waves spawning
-		spawnTimer += elapsed * 3;
+		spawnTimer += elapsed * 2;
 		if (spawnTimer > 1)
 		{
 			spawnTimer--;
 			waveTimer++;
 			// Change waves based on time elapsed (20 seconds)
-			if (waveTimer == 20)
+			if (waveTimer == 45)
 			{
 				waveTimer = 0;
 				waveNumber++;
@@ -142,12 +169,12 @@ class PlayState extends FlxState
 				FlxG.switchState(new GameOverState());
 			});
 		}
-		else if (player.health > 0 && waveNumber == 3)
+		else if (waveNumber > 3 && player.health > 0)
 		{
-			end = true;
+			win = true;
 			FlxG.camera.fade(FlxColor.BLACK, 0.33, false, function gameOver()
 			{
-				FlxG.switchState(new GameOverState());
+				FlxG.switchState(new GameWinState());
 			});
 		}
 	}

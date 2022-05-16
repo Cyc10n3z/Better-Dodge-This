@@ -4,7 +4,7 @@ import flixel.system.debug.interaction.tools.Pointer;
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.text.FlxText;
-import player.Saw;
+import player.Player;
 import flixel.addons.ui.FlxButtonPlus;
 import flixel.util.FlxColor;
 import lime.system.System;
@@ -14,7 +14,6 @@ class MenuState extends FlxState
 {
 	var titleText:FlxText;
 	var titleText2:FlxText;
-	var pauseText:FlxText;
 	var playButton:FlxButtonPlus;
 	#if desktop
 	var exitButton:FlxButtonPlus;
@@ -23,32 +22,26 @@ class MenuState extends FlxState
 	override public function create()
 	{
 		// First part of title
-		titleText = new FlxText(20, 0, 0, "Better Dodge", 35);
+		titleText = new FlxText(190, 40, 0, "Better Dodge", 35);
 		titleText.alignment = CENTER;
-		titleText.screenCenter(X);
 		add(titleText);
 
 		// Second part of title
-		titleText2 = new FlxText(20, 60, 0, "This!", 35);
+		titleText2 = new FlxText(270, 80, 0, "This!", 35);
 		titleText2.alignment = CENTER;
-		titleText2.screenCenter(X);
 		add(titleText2);
-		// Add paused message
-		pauseText = new FlxText(20, 100, 0, "PAUSED", 35);
-		pause.alignment;
-		pause.screen
-		// Add play button
-		playButton = new FlxButtonPlus(0, 0, clickPlay, "Play", 200, 50);
-		// PlayButton.onUp.sound = FlxG.sound.load(AssetPaths.start__wav);
-		playButton.x = (FlxG.width / 2) - (0.5 * playButton.width);
+
+		// Play button
+		playButton = new FlxButtonPlus(0, 0, clickPlay, "Play", 100, 50);
+		playButton.x = (250) - (0.5 * playButton.width);
 		playButton.y = FlxG.height - playButton.height - 50;
 		add(playButton);
 
-		// Add exit button
+		// Exit game button
 		#if desktop
 		exitButton = new FlxButtonPlus(0, 0, clickExit, "Exit", 100, 50);
-		exitButton.x = (FlxG.width / 5) - (0.5 * exitbutton.width);
-		exitButton.y = FlxG.height - exitButton.height - 10;
+		exitButton.x = (400) - (0.5 * exitButton.width);
+		exitButton.y = FlxG.height - exitButton.height - 50;
 		add(exitButton);
 		#end
 
@@ -61,7 +54,6 @@ class MenuState extends FlxState
 	{
 		FlxG.camera.fade(FlxColor.BLACK, 0.33, false, function()
 		{
-			FlxG.sound.music.stop();
 			FlxG.switchState(new PlayState());
 		});
 	}

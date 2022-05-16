@@ -10,15 +10,15 @@ class Player extends FlxSprite
 {
 	public static var SPEED(default, never):Int = 150;
 
-	public var maxHealth:Int = 2;
+	public var maxHealth:Int = 4;
 	public var damage:Int;
 
 	public function new(x:Float = 0, y:Float = 0)
 	{
 		super(x, y);
 		loadGraphic(AssetPaths.PlayerShip__png, false);
-		this.width = 45;
-		this.height = 45;
+		this.width = 29;
+		this.height = 26;
 		health = maxHealth;
 	}
 

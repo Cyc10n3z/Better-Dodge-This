@@ -16,8 +16,6 @@ class GameOverState extends FlxState
 	var titleText2:FlxText;
 	var endMessage:FlxText;
 	var endMessage2:FlxText;
-	var finalScore:FlxText;
-	var totalScore:Int;
 	var tryAgainButton:FlxButtonPlus;
 	#if desktop
 	var exitButton:FlxButtonPlus;
@@ -29,15 +27,14 @@ class GameOverState extends FlxState
 		FlxG.mouse.visible = true;
 		#end
 
-		// first part of title
-		titleText = new FlxText(20, 0, 0, "Better Dodge", 35);
+		// First part of title
+		titleText = new FlxText(190, 40, 0, "Better Dodge", 35);
 		titleText.alignment = CENTER;
-		titleText.screenCenter(X);
 		add(titleText);
-		// second part of title
-		titleText2 = new FlxText(20, 60, 0, "This!", 35);
+
+		// Second part of title
+		titleText2 = new FlxText(270, 80, 0, "This!", 35);
 		titleText2.alignment = CENTER;
-		titleText2.screenCenter(X);
 		add(titleText2);
 
 		// Game Over messages
@@ -49,20 +46,17 @@ class GameOverState extends FlxState
 
 		// Play again button
 		tryAgainButton = new FlxButtonPlus(0, 0, tryAgain, "Try Again?", 100, 50);
-		tryAgainButton.x = (FlxG.width / 3) - (0.5 * tryAgainButton.width);
-		tryAgainButton.y = FlxG.height - tryAgainButton.height - 10;
+		tryAgainButton.x = (250) - (0.5 * tryAgainButton.width);
+		tryAgainButton.y = FlxG.height - tryAgainButton.height - 50;
 		add(tryAgainButton);
 
-		// Exit the game button
+		// Exit game button
 		#if desktop
 		exitButton = new FlxButtonPlus(0, 0, clickExit, "Exit", 100, 50);
-		exitButton.x = (FlxG.width / 5) - (0.5 * exitbutton.width);
-		exitButton.y = FlxG.height - exitButton.height - 10;
+		exitButton.x = (400) - (0.5 * exitButton.width);
+		exitButton.y = FlxG.height - exitButton.height - 50;
 		add(exitButton);
 		#end
-
-		// Sound for player death
-		// FlxG.sound.play(AssetPaths.PlayerDeath__wav, 100);
 
 		super.create();
 	}
@@ -83,11 +77,5 @@ class GameOverState extends FlxState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		// Menu click sound
-		if (FlxG.mouse.justPressed)
-		{
-			// FlxG.sound.play(AssetPaths.MenuClick__wav, 100);
-		}
 	}
 }
