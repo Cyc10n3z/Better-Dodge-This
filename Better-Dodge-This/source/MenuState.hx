@@ -22,13 +22,6 @@ class MenuState extends FlxState
 
 	override public function create()
 	{
-		// Don't restart the music if it's already playing
-		if (FlxG.sound.music == null)
-		{
-			// Start the menu music
-			// FlxG.sound.playMusic(AssetPaths., 0.8, true);
-		}
-
 		// First part of title
 		titleText = new FlxText(20, 0, 0, "Better Dodge", 35);
 		titleText.alignment = CENTER;
@@ -53,8 +46,9 @@ class MenuState extends FlxState
 
 		// Add exit button
 		#if desktop
-		exitButton = new FlxButtonPlus(FlxG.width - 90, 8, clickExit, "X", 80, 20);
-		// exitButton.loadGraphic(AssetPaths.button__png, true, 20, 20);
+		exitButton = new FlxButtonPlus(0, 0, clickExit, "Exit", 100, 50);
+		exitButton.x = (FlxG.width / 5) - (0.5 * exitbutton.width);
+		exitButton.y = FlxG.height - exitButton.height - 10;
 		add(exitButton);
 		#end
 
@@ -82,12 +76,6 @@ class MenuState extends FlxState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		// Menu click sound
-		if (FlxG.mouse.justPressed)
-		{
-			// FlxG.sound.play(AssetPaths., 100);
-		}
 
 		if (FlxG.keys.justPressed.ENTER)
 			FlxG.fullscreen = !FlxG.fullscreen;

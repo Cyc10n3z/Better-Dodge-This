@@ -103,11 +103,17 @@ class PlayState extends FlxState
 		if (FlxG.keys.justPressed.ENTER)
 			FlxG.fullscreen = !FlxG.fullscreen;
 
-		// End the game if the player reaches 0 lives or health
+		// End the game if the player dies or survives all waves
 		if (player.health <= 0)
 		{
-			// FlxG.sound.play(AssetPaths.PlayerDeath__wav, 100);
-
+			end = true;
+			FlxG.camera.fade(FlxColor.BLACK, 0.33, false, function gameOver()
+			{
+				FlxG.switchState(new GameOverState());
+			});
+		}
+		else if (player.health > 0 && waveNumber == 3)
+		{
 			end = true;
 			FlxG.camera.fade(FlxColor.BLACK, 0.33, false, function gameOver()
 			{

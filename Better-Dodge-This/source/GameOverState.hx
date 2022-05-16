@@ -39,28 +39,25 @@ class GameOverState extends FlxState
 		titleText2.alignment = CENTER;
 		titleText2.screenCenter(X);
 		add(titleText2);
-		/*// Final Score message
-			totalScore = Hud.score;
-			finalScore = new FlxText(0, 170, 0, "Final Score: " + totalScore, 22);
-			finalScore.screenCenter(X);
-			add(finalScore); */
 
 		// Game Over messages
-		endMessage = new FlxText(0, 0, 0, "Looks like you didn't dodge very well!", 22);
+		endMessage = new FlxText(0, 0, 0, "You are supposed to dodge ALL the things!", 22);
 		endMessage.screenCenter();
 		add(endMessage);
-		endMessage2 = new FlxText((FlxG.width / 2) - 90, (FlxG.height / 2) + 20, 0, "Game Over!", 22);
+		endMessage2 = new FlxText((FlxG.width / 2) - 90, (FlxG.height / 2) + 20, 0, "Game Over.", 22);
 		add(endMessage2);
 
 		// Play again button
-		tryAgainButton = new FlxButtonPlus(0, 0, tryAgain, "Try Again?", 200, 50);
-		tryAgainButton.x = (FlxG.width / 2) - (0.5 * tryAgainButton.width);
+		tryAgainButton = new FlxButtonPlus(0, 0, tryAgain, "Try Again?", 100, 50);
+		tryAgainButton.x = (FlxG.width / 3) - (0.5 * tryAgainButton.width);
 		tryAgainButton.y = FlxG.height - tryAgainButton.height - 10;
 		add(tryAgainButton);
 
 		// Exit the game button
 		#if desktop
-		exitButton = new FlxButtonPlus(FlxG.width - 90, 8, clickExit, "X", 80, 20);
+		exitButton = new FlxButtonPlus(0, 0, clickExit, "Exit", 100, 50);
+		exitButton.x = (FlxG.width / 5) - (0.5 * exitbutton.width);
+		exitButton.y = FlxG.height - exitButton.height - 10;
 		add(exitButton);
 		#end
 
